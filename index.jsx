@@ -247,9 +247,9 @@ function render({ output, error }) {
           <Mic.Widget />
           <Sound.Widget />
           <UserWidgets only={["bluetooth"]} />
-          <Battery.Widget />
           <ViscosityVPN.Widget />
           <Wifi.Widget />
+          <Battery.Widget />
           <Keyboard.Widget />
           <DateDisplay.Widget />
           <Time.Widget />
