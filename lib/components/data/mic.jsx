@@ -131,6 +131,7 @@ export const Widget = React.memo(() => {
           step="1"
           value={volume}
           className="mic__slider"
+          style={{ "--slider-fill": `${volume}%` }}
           onMouseDown={onMouseDown}
           onMouseUp={onMouseUp}
           onChange={onChange}

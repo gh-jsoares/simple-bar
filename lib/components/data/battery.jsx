@@ -94,13 +94,28 @@ export const Widget = React.memo(() => {
 
   const { system, percentage, charging, caffeinate, lowPowerMode } = state;
   const isLowBattery = !charging && percentage < 20;
+  const isFull = percentage >= 100;
 
   const classes = Utils.classNames("battery", {
     "battery--low": isLowBattery,
+    "battery--charging": charging && !isFull,
+    "battery--full": isFull,
+    "battery--mid": !charging && percentage >= 20 && percentage < 80,
+    "battery--good": !charging && percentage >= 80 && !isFull,
     "battery--low-power-mode": lowPowerMode,
     "battery--caffeinate":
       !disableCaffeinateInvertedBackground && caffeinate.length > 0,
   });
+
+  const stateLabel = isFull
+    ? "(full)"
+    : charging
+      ? "(charging)"
+      : lowPowerMode
+        ? "(low power)"
+        : isLowBattery
+          ? "(low)"
+          : "";
 
   const transformValue = getTransform(percentage);
 
@@ -144,7 +159,7 @@ export const Widget = React.memo(() => {
           <Icons.Coffee className="battery__caffeinate-icon" />
         </SuspenseIcon>
       )}
-      <span className="battery__percentage">{percentage}%</span>
+      <span className="battery__percentage">{percentage}%{stateLabel ? ` ${stateLabel}` : ""}</span>
     </DataWidget.Widget>
   );
 });
