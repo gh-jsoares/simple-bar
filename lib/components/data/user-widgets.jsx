@@ -167,9 +167,12 @@ const UserWidget = React.memo(({ index, widget }) => {
     onMiddleClick: hasMiddleClickAction ? onMiddleClick : undefined,
   };
 
-  const hasOutput = state && Utils.cleanupOutput(state).trim().length > 0 && Utils.cleanupOutput(state).trim() !== "·";
+  const cleanedState = state ? Utils.cleanupOutput(state).trim() : "";
+  const hasOutput = cleanedState.length > 0 && cleanedState !== "·";
+  const stateSlug = hasOutput ? cleanedState.toLowerCase().replace(/[^a-z0-9]/g, "-") : "";
   const widgetClasses = Utils.classNames("user-widget", `user-widget--${index}`, {
     "user-widget--has-output": hasOutput,
+    [`user-widget--state-${stateSlug}`]: hasOutput && stateSlug,
   });
 
   return (
