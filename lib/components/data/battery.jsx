@@ -128,7 +128,6 @@ export const Widget = React.memo(() => {
             <Icons.Charging className="battery__charging-icon" />
           </SuspenseIcon>
         )}
-        <span className="battery__icon-percentage">{percentage}</span>
       </div>
     </div>
   );
@@ -145,6 +144,7 @@ export const Widget = React.memo(() => {
           <Icons.Coffee className="battery__caffeinate-icon" />
         </SuspenseIcon>
       )}
+      <span className="battery__percentage">{percentage}%</span>
     </DataWidget.Widget>
   );
 });
