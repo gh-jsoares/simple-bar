@@ -167,9 +167,14 @@ const UserWidget = React.memo(({ index, widget }) => {
     onMiddleClick: hasMiddleClickAction ? onMiddleClick : undefined,
   };
 
+  const hasOutput = state && Utils.cleanupOutput(state).trim().length > 0 && Utils.cleanupOutput(state).trim() !== "·";
+  const widgetClasses = Utils.classNames("user-widget", `user-widget--${index}`, {
+    "user-widget--has-output": hasOutput,
+  });
+
   return (
     <DataWidget.Widget
-      classes={`user-widget user-widget--${index}`}
+      classes={widgetClasses}
       Icon={Icon}
       style={style}
       {...onClickProps}

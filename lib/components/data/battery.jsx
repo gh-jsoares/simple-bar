@@ -93,15 +93,14 @@ export const Widget = React.memo(() => {
   if (!state) return null;
 
   const { system, percentage, charging, caffeinate, lowPowerMode } = state;
-  const isLowBattery = !charging && percentage < 20;
+  const isLowBattery = !charging && percentage < 30;
   const isFull = percentage >= 100;
 
   const classes = Utils.classNames("battery", {
-    "battery--low": isLowBattery,
-    "battery--charging": charging && !isFull,
-    "battery--full": isFull,
-    "battery--mid": !charging && percentage >= 20 && percentage < 80,
-    "battery--good": !charging && percentage >= 80 && !isFull,
+    "battery--low": isLowBattery && !charging,
+    "battery--charging": charging,
+    "battery--full": !charging && percentage >= 80,
+    "battery--mid": !charging && percentage >= 30 && percentage < 80,
     "battery--low-power-mode": lowPowerMode,
     "battery--caffeinate":
       !disableCaffeinateInvertedBackground && caffeinate.length > 0,
