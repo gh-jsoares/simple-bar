@@ -14,17 +14,18 @@ export default React.memo(UserWidgets);
 
 /**
  * UserWidgets component that renders a list of user-defined widgets.
+ * @param {Object} props
+ * @param {string[]} [props.only] - If provided, only render widgets with these keys.
  * @returns {JSX.Element[]} Array of UserWidget components.
  */
-function UserWidgets() {
+function UserWidgets({ only } = {}) {
   const { settings } = useSimpleBarContext();
   const { userWidgetsList } = settings.userWidgets;
 
-  // Get the keys of the userWidgetsList object
   const keys = Object.keys(userWidgetsList);
+  const filtered = only ? keys.filter((k) => only.includes(k)) : keys;
 
-  // Map over the keys and render a UserWidget for each key
-  return keys.map((key) => (
+  return filtered.map((key) => (
     <UserWidget key={key} index={key} widget={userWidgetsList[key]} />
   ));
 }

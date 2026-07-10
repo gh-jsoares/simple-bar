@@ -237,20 +237,22 @@ function render({ output, error }) {
           <GitHub.Widget />
           <Weather.Widget />
           <Netstats.Widget />
+          <NextMeeting.Widget />
+          <UserWidgets only={["docker"]} />
+          <Notifications.Widget />
+          <UserWidgets only={["storage"]} />
           <Cpu.Widget />
           <Gpu.Widget />
           <Memory.Widget />
-          <Battery.Widget />
-          <Notifications.Widget />
-          <NextMeeting.Widget />
           <Mic.Widget />
           <Sound.Widget />
+          <UserWidgets only={["bluetooth"]} />
+          <Battery.Widget />
           <ViscosityVPN.Widget />
           <Wifi.Widget />
           <Keyboard.Widget />
           <DateDisplay.Widget />
           <Time.Widget />
-          <UserWidgets />
         </div>
         <Missives.Component />
       </div>
