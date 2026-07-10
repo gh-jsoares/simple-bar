@@ -114,7 +114,7 @@ export const Widget = React.memo(() => {
   });
 
   return (
-    <DataWidget.Widget classes={classes} disableSlider>
+    <DataWidget.Widget classes={classes} disableSlider onRightClick={(e) => { Utils.clickEffect(e); Uebersicht.run("open x-apple.systempreferences:com.apple.Sound"); }}>
       <div className="mic__display">
         {showIcon && (
           <SuspenseIcon>

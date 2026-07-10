@@ -149,6 +149,7 @@ export const Widget = React.memo(() => {
       classes={classes}
       Icon={showIcon ? Icon : null}
       disableSlider
+      onRightClick={(e) => { Utils.clickEffect(e); Uebersicht.run("open x-apple.systempreferences:com.apple.preferences.battery"); }}
       {...onClickProp}
     >
       {caffeinate.length > 0 && (
