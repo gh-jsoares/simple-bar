@@ -100,8 +100,9 @@ export const Widget = React.memo(() => {
       classes="date-display"
       Icon={showIcon ? Icons.Date : null}
       onClick={onClick}
+      disableSlider
     >
-      {now}
+      <span className="date-display__text">{now}</span>
     </DataWidget.Widget>
   );
 });

@@ -49,6 +49,7 @@ export const BellOff = React.lazy(() => import("./library/bell-off.jsx"));
 export const Bitcoin = React.lazy(() => import("./library/bitcoin.jsx"));
 export const BitWarden = React.lazy(() => import("./library/bit-warden.jsx"));
 export const Blender = React.lazy(() => import("./library/blender.jsx"));
+export const Bluetooth = React.lazy(() => import("./library/bluetooth.jsx"));
 export const Book = React.lazy(() => import("./library/book.jsx"));
 export const BraveBrowser = React.lazy(
   () => import("./library/brave-browser.jsx"),

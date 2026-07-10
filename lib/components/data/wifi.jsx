@@ -107,8 +107,9 @@ export const Widget = React.memo(() => {
       Icon={showIcon ? Icon : null}
       onClick={toggleWifiOnClick ? onClick : undefined}
       onRightClick={openWifiPreferences}
+      disableSlider
     >
-      {name}
+      {name && <span className="wifi__name">{name}</span>}
     </DataWidget.Widget>
   );
 });

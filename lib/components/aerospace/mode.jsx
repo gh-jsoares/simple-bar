@@ -8,10 +8,10 @@ const Mode = React.memo(() => {
 
   const getMode = React.useCallback(async () => {
     const output = await Uebersicht.run(
-      `cat /tmp/aerospace-mode 2>/dev/null || echo main`
+      `cat /tmp/aerospace-mode 2>/dev/null`
     );
     const cleaned = Utils.cleanupOutput(output).trim();
-    setMode(cleaned === "main" ? "" : cleaned);
+    setMode(cleaned && cleaned !== "main" ? cleaned : "");
   }, []);
 
   React.useEffect(() => {
