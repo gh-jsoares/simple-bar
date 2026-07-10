@@ -63,6 +63,9 @@ const AerospaceSpaces = React.lazy(
 const AerospaceProcess = React.lazy(
   () => import("./lib/components/aerospace/process.jsx"),
 );
+const AerospaceMode = React.lazy(
+  () => import("./lib/components/aerospace/mode.jsx"),
+);
 
 // Set refresh frequency to false
 // Übersicht auto-refresh system is not required as simple-bar works in sync with
@@ -217,6 +220,7 @@ function render({ output, error }) {
             <AerospaceContextProvider>
               <AerospaceSpaces />
               <AerospaceProcess />
+              <AerospaceMode />
             </AerospaceContextProvider>
           )}
         </React.Suspense>
