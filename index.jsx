@@ -238,7 +238,6 @@ function render({ output, error }) {
           <Weather.Widget />
           <Netstats.Widget />
           <NextMeeting.Widget />
-          <UserWidgets only={["nowplaying"]} />
           <UserWidgets only={["weather"]} />
           <UserWidgets only={["docker"]} />
           <Notifications.Widget />
@@ -248,6 +247,7 @@ function render({ output, error }) {
           <Memory.Widget />
           <Mic.Widget />
           <Sound.Widget />
+          <UserWidgets only={["nowplaying"]} />
           <UserWidgets only={["bluetooth"]} />
           <UserWidgets only={["vpn"]} />
           <ViscosityVPN.Widget />
