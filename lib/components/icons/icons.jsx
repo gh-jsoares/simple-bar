@@ -279,6 +279,7 @@ export const Storm = React.lazy(() => import("./library/storm.jsx"));
 export const SublimeText = React.lazy(
   () => import("./library/sublime-text.jsx"),
 );
+export const Shield = React.lazy(() => import("./library/shield.jsx"));
 export const Sun = React.lazy(() => import("./library/sun.jsx"));
 export const SuperProductivity = React.lazy(
   () => import("./library/super-productivity.jsx"),
