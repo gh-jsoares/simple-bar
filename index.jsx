@@ -226,7 +226,6 @@ function render({ output, error }) {
         </React.Suspense>
         <Settings.Wrapper />
         <div className="simple-bar__data">
-          <UserWidgets />
           <Zoom.Widget />
           <BrowserTrack.Widget />
           <Spotify.Widget />
@@ -251,6 +250,7 @@ function render({ output, error }) {
           <Keyboard.Widget />
           <DateDisplay.Widget />
           <Time.Widget />
+          <UserWidgets />
         </div>
         <Missives.Component />
       </div>
