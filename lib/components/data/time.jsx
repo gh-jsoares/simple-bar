@@ -48,10 +48,19 @@ export const Widget = React.memo(() => {
     () => ({
       hour: "numeric",
       minute: "numeric",
-      second: showSeconds ? "numeric" : undefined,
       hour12,
     }),
-    [hour12, showSeconds],
+    [hour12],
+  );
+
+  const optionsWithSeconds = React.useMemo(
+    () => ({
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12,
+    }),
+    [hour12],
   );
 
   /**
@@ -67,10 +76,12 @@ export const Widget = React.memo(() => {
    */
   const getTime = React.useCallback(() => {
     if (!visible) return;
-    const time = new Date().toLocaleString("en-UK", options);
-    setState({ time });
+    const now = new Date();
+    const time = now.toLocaleString("en-UK", options);
+    const timeWithSeconds = now.toLocaleString("en-UK", optionsWithSeconds);
+    setState({ time, timeWithSeconds });
     setLoading(false);
-  }, [visible, options]);
+  }, [visible, options, optionsWithSeconds]);
 
   // Use server socket to get time updates
   useServerSocket("time", visible, getTime, resetWidget, setLoading);
@@ -79,7 +90,7 @@ export const Widget = React.memo(() => {
 
   if (loading) return <DataWidgetLoader.Widget className="time" />;
   if (!state) return null;
-  const { time } = state;
+  const { time, timeWithSeconds } = state;
 
   // Calculate the progress of the current day
   const [dayStart, dayEnd] = [new Date(), new Date()];
@@ -104,7 +115,8 @@ export const Widget = React.memo(() => {
       Icon={showIcon ? TimeIcon : null}
       disableSlider
     >
-      {time}
+      <span className="time__base">{time}</span>
+      <span className="time__seconds">{timeWithSeconds}</span>
       {dayProgress && (
         <div
           className="time__filler"
