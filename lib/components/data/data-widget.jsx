@@ -61,17 +61,21 @@ export function Widget({
    * Handles the mouse enter event to start the sliding effect.
    */
   const onMouseEnter = () => {
-    Utils.startSliding(
-      ref.current,
-      ".data-widget__inner",
-      ".data-widget__slider",
-    );
+    clearTimeout(ref.current?.__slideTimeout);
+    ref.current.__slideTimeout = setTimeout(() => {
+      Utils.startSliding(
+        ref.current,
+        ".data-widget__inner",
+        ".data-widget__slider",
+      );
+    }, 350);
   };
 
   /**
    * Handles the mouse leave event to stop the sliding effect.
    */
   const onMouseLeave = () => {
+    clearTimeout(ref.current?.__slideTimeout);
     Utils.stopSliding(ref.current, ".data-widget__slider");
   };
 
