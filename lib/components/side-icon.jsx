@@ -13,7 +13,7 @@ export function Component() {
     const rect = e.currentTarget.getBoundingClientRect();
     const screenX = Math.round(rect.left);
     const screenHeight = window.screen.height;
-    const screenY = Math.round(screenHeight - rect.bottom - 34);
+    const screenY = Math.round(screenHeight - rect.bottom - 14);
     Uebersicht.run(`${APPLE_MENU_CMD} ${screenX} ${screenY} &`);
   };
 
