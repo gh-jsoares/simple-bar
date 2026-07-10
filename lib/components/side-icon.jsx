@@ -9,8 +9,12 @@ export { sideIconStyles as styles } from "../../lib/styles/components/side-icon"
 const APPLE_MENU_CMD = "$HOME/.config/ubersicht/bin/apple-menu";
 
 export function Component() {
-  const onClick = () => {
-    Uebersicht.run(`${APPLE_MENU_CMD} &`);
+  const onClick = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const screenX = Math.round(rect.left);
+    const screenHeight = window.screen.height;
+    const screenY = Math.round(screenHeight - rect.bottom);
+    Uebersicht.run(`${APPLE_MENU_CMD} ${screenX} ${screenY} &`);
   };
 
   return (
