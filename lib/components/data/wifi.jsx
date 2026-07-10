@@ -97,8 +97,8 @@ export const Widget = React.memo(() => {
    */
   const onClick = async (e) => {
     Utils.clickEffect(e);
-    await toggleWifi(isActive, networkDevice, pushMissive);
-    getWifi();
+    await toggleWifi(isActive, networkDevice);
+    setTimeout(getWifi, 1500);
   };
 
   return (
@@ -122,13 +122,11 @@ Widget.displayName = "Wifi";
  * @param {string} networkDevice - The network device name.
  * @param {function} pushMissive - Function to push notifications.
  */
-async function toggleWifi(isActive, networkDevice, pushMissive) {
+async function toggleWifi(isActive, networkDevice) {
   if (isActive) {
     await Uebersicht.run(`networksetup -setairportpower ${networkDevice} off`);
-    Utils.notification("Disabling network...", pushMissive);
   } else {
     await Uebersicht.run(`networksetup -setairportpower ${networkDevice} on`);
-    Utils.notification("Enabling network...", pushMissive);
   }
 }
 
@@ -138,7 +136,7 @@ async function toggleWifi(isActive, networkDevice, pushMissive) {
  */
 function openWifiPreferences(e) {
   Utils.clickEffect(e);
-  Uebersicht.run(`open /System/Library/PreferencePanes/Network.prefPane/`);
+  Uebersicht.run(`open x-apple.systempreferences:com.apple.wifi-settings-extension`);
 }
 
 /**
