@@ -115,8 +115,7 @@ export const Widget = React.memo(() => {
       Icon={showIcon ? TimeIcon : null}
       disableSlider
     >
-      <span className="time__base">{time}</span>
-      <span className="time__seconds">{timeWithSeconds}</span>
+      {time}<span className="time__seconds">:{timeWithSeconds.split(":")[2]}</span>
       {dayProgress && (
         <div
           className="time__filler"
