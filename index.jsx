@@ -238,6 +238,7 @@ function render({ output, error }) {
           <Weather.Widget />
           <Netstats.Widget />
           <NextMeeting.Widget />
+          <UserWidgets only={["nowplaying"]} />
           <UserWidgets only={["weather"]} />
           <UserWidgets only={["docker"]} />
           <Notifications.Widget />
